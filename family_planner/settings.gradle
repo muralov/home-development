@@ -1,11 +1,5 @@
-include 'hello-world'
-include 'text-mining'
-include 'algorithms'
-include 'java'
-include 'family'
+include 'meals'
+include 'planner'
 
-project(":hello-world").projectDir = new File(rootDir, "modules/hello-world")
-project(":text-mining").projectDir = new File(rootDir, "modules/text-mining")
-project(":algorithms").projectDir = new File(rootDir, "modules/algorithms")
-project(":java").projectDir = new File(rootDir, "modules/java")
-project(":family").projectDir = new File(rootDir, "web/family")
+project(":meals").projectDir = new File(rootDir, "modules/meals")
+project(":planner").projectDir = new File(rootDir, "modules/planner")

@@ -1,0 +1,13 @@
+#ignore build files
+build
+bin
+
+#ignore pdf or image files
+docs/**/*.pdf
+docs/ui/*.png
+docs/ui/*.gif
+
+#ignore project eclipse generated files
+.classpath
+.project
+.settings
