@@ -1,4 +1,9 @@
 
 dependencies {
-    compile 'org.springframework:spring-context:4.2.5.RELEASE'
+    compile 'io.springfox:springfox-swagger2:2.2.2'
+}
+
+jar {
+	baseName = 'meals'
+	version =  '0.0.0'
 }
