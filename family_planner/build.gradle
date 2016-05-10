@@ -14,6 +14,7 @@ subprojects {
 	
 	repositories {
 		mavenCentral()
+		maven{url "file:///C:/Users/MUR/home-development/libs/releases"}
 	}
 
 	sourceCompatibility = 1.8
@@ -27,7 +28,7 @@ subprojects {
 		compile("org.springframework.boot:spring-boot-starter-jetty")
 		// end::jetty[]
 		// tag::actuator[]
-		compile("org.springframework.boot:spring-boot-starter-actuator")
+		//compile("org.springframework.boot:spring-boot-starter-actuator")
 		// end::actuator[]
 		testCompile("junit:junit")
 		testCompile("org.springframework.boot:spring-boot-starter-test")

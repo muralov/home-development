@@ -6,6 +6,7 @@ bin
 docs/**/*.pdf
 docs/ui/*.png
 docs/ui/*.gif
+docs/ui/*.jpg
 
 #ignore project eclipse generated files
 .classpath
