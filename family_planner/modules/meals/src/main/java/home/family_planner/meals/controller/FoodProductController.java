@@ -1,4 +1,4 @@
-package home.family_planner.meals.rest;
+package home.family_planner.meals.controller;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import home.family_planner.meals.models.FoodProduct;
+import home.family_planner.meals.model.FoodProduct;
 import home.family_planner.meals.repository.FoodProductRepository;
 
 @RestController

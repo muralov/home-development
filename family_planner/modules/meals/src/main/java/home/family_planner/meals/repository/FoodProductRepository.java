@@ -6,7 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import home.family_planner.meals.models.FoodProduct;
+
+import home.family_planner.meals.model.FoodProduct;
 
 @Repository
 public class FoodProductRepository implements CrudRepository<FoodProduct, Long>{

@@ -1,4 +1,4 @@
-package home.family_planner.meals.models;
+package home.family_planner.meals.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

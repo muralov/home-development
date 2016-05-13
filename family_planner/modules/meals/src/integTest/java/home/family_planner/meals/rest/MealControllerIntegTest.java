@@ -1,8 +1,5 @@
 package home.family_planner.meals.rest;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-
 import java.net.URL;
 
 import org.junit.Before;
@@ -18,13 +15,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 import home.family_planner.meals.Application;
-import home.family_planner.meals.controller.FoodProductController;
+import home.family_planner.meals.model.Meal;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 @IntegrationTest({"server.port=0"})
-public class FoodControllerIntegTest {
+public class MealControllerIntegTest {
 	
 	@Value("${local.server.port}")
     private int port;
@@ -34,14 +31,25 @@ public class FoodControllerIntegTest {
 
 	@Before
 	public void setUp() throws Exception {
-		this.base = new URL("http://localhost:" + port + "/foods");
 		template = new TestRestTemplate();
 	}
-
+	
 	@Test
-	public void getHello() throws Exception {
-		ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-		assertThat(response.getBody(), equalTo(FoodProductController.RESPONSE));
+	public void getMeal() throws Exception {
+		this.base = new URL("http://localhost:" + port + "/meals/1");
+		ResponseEntity<Meal> response = template.getForEntity(base.toString(), Meal.class);
+		Meal m = response.getBody();
+		
+//		assertThat(response.getBody(), equalTo(FoodProductController.RESPONSE));
+	}
+	
+	@Test
+	public void addMeal() throws Exception {
+		this.base = new URL("http://localhost:" + port + "/meals/1");
+		ResponseEntity<Meal> response = template.getForEntity(base.toString(), Meal.class);
+		Meal m = response.getBody();
+		
+//		assertThat(response.getBody(), equalTo(FoodProductController.RESPONSE));
 	}
 
 }
