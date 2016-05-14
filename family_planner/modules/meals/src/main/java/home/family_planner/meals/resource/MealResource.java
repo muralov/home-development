@@ -4,8 +4,6 @@ import org.springframework.hateoas.ResourceSupport;
 
 public class MealResource extends ResourceSupport {
 	
-	private Long id;
-	
 	private String title;
 	
 	private String description;

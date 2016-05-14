@@ -56,7 +56,6 @@ public class MealController {
     public @ResponseBody MealResource get(@PathVariable("id") Long id) {
     	Meal meal = repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
     	MealResource mr = new MealResourceAssembler().toResource(meal);
-    	mr.add(linkTo(methodOn(MealController.class).get(Long.valueOf(id))).withSelfRel());
     	mr.add(linkTo(methodOn(MealController.class).getFoodProducts(id)).withRel(FOOD_PRODUCTS_REL));
     	mr.add(linkTo(methodOn(ReceiptController.class).get(Long.valueOf(1))).withRel(RECEIPT_REL));
 		return mr;
