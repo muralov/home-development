@@ -34,6 +34,10 @@ public class Meal extends Food {
 		this.receipt = receipt;
 		this.foodProducts = foodProducts;
 	}
+	
+	public long getId() {
+		return id;
+	}
 
 	public Receipt getReceipt() {
 		return receipt;

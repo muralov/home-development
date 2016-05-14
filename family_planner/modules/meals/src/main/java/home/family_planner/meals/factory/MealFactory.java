@@ -1,5 +1,12 @@
 package home.family_planner.meals.factory;
 
-public class MealFactory extends AbstractFactory {
+import home.family_planner.meals.model.Meal;
+
+public class MealFactory implements IFactory {
+
+	@Override
+	public Meal create() {
+		return new Meal();
+	}
 
 }

@@ -2,10 +2,8 @@ package home.family_planner.meals.factory;
 
 import home.family_planner.meals.model.Food;
 
-public abstract class AbstractFactory {
+public interface IFactory {
 
-	public Food create() {
-		return null;
-	}
+	Food create();
 	
 }

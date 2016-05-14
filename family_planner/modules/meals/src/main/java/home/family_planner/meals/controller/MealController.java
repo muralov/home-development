@@ -1,11 +1,11 @@
 package home.family_planner.meals.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.family_planner.meals.helper.MealResourceAssembler;
 import home.family_planner.meals.model.FoodProduct;
 import home.family_planner.meals.model.Meal;
 import home.family_planner.meals.repository.MealRepository;
@@ -26,51 +27,53 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 @RequestMapping("/meals")
 public class MealController {
 	
+	private static final String FOOD_PRODUCTS_REL = "food products";
+	private static final String RECEIPT_REL = "receipt";
+	
 	@Autowired
 	MealRepository repository;
 	
     @Transactional
 	@RequestMapping(method=RequestMethod.POST)
-    public @ResponseBody MealResource add(@RequestBody MealResource input) {
-//		repository.save(input);
-    	
-    	
-    	
-        return input;
+    public @ResponseBody MealResource add(@RequestBody Meal input) {
+    	repository.save(input);
+    	return new MealResourceAssembler().toResource(input);
     }
     
     @Transactional
 	@RequestMapping(value="/{id}", method=RequestMethod.POST)
-    public 	@ResponseBody Meal update(@PathVariable("id") Long id, @RequestBody Meal input) {
-    	Meal meal = repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
+    public 	@ResponseBody MealResource update(@PathVariable("id") Long id, @RequestBody Meal input) {
+    	Meal meal = getAndValidateMeal(id);
     	meal.setTitle(input.getTitle());
     	meal.setDescription(input.getDescription());
-    	meal.setReceipt(input.getReceipt());
     	meal.setFoodProducts(input.getFoodProducts());
-		repository.save(meal);
-        return meal;
+    	meal.setReceipt(input.getReceipt());
+    	repository.save(input);
+    	return new MealResourceAssembler().toResource(input);
     }
     
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public @ResponseBody MealResource get(@PathVariable("id") Long id) {
     	Meal meal = repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
-    	List<Link> fps = new ArrayList<>();
-    	fps.add(linkTo(methodOn(FoodProductController.class).get(Long.valueOf(1))).withRel("food product"));
-    	fps.add(linkTo(methodOn(FoodProductController.class).get(Long.valueOf(2))).withRel("food product"));
-    	Link receipt = linkTo(methodOn(ReceiptController.class).get(Long.valueOf(1))).withRel("receipt");
-    	return new MealResource(id, meal.getTitle(), meal.getDescription(), receipt, fps);
-//        return repository.findOne(id).orElseThrow(() -> new MealNotFoundException(id));
+    	MealResource mr = new MealResourceAssembler().toResource(meal);
+    	mr.add(linkTo(methodOn(MealController.class).get(Long.valueOf(id))).withSelfRel());
+    	mr.add(linkTo(methodOn(MealController.class).getFoodProducts(id)).withRel(FOOD_PRODUCTS_REL));
+    	mr.add(linkTo(methodOn(ReceiptController.class).get(Long.valueOf(1))).withRel(RECEIPT_REL));
+		return mr;
     }
 	
 	@RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody List<Meal> foods() {
-        return repository.findAll();
+    public @ResponseBody List<MealResource> foods() {
+		MealResourceAssembler assembler = new MealResourceAssembler();
+        return repository.findAll().stream()
+        		.map(meal -> assembler.toResource(meal))
+        		.collect(Collectors.toList());
     }
 	
 	@Transactional
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
-		validateFoodProduct(id);
+		getAndValidateMeal(id);
 		repository.delete(id);
     }
 	
@@ -90,8 +93,8 @@ public class MealController {
 		//TODO: implementation
     }
 	
-	private void validateFoodProduct(Long id) {
-		this.repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
+	private Meal getAndValidateMeal(Long id) {
+		return repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
 	}
 
 }
