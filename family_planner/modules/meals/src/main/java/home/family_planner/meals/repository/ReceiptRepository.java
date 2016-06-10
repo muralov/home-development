@@ -1,5 +1,6 @@
 package home.family_planner.meals.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
+import home.family_planner.meals.model.Meal;
 import home.family_planner.meals.model.Receipt;
 
 @Repository
@@ -25,6 +27,19 @@ public class ReceiptRepository {
 				.setParameter("id", id)
 				.getSingleResult();
 		return Optional.of(receipt);
+	}
+	
+	public void delete(Long id) {
+		entityManager.createQuery("delete Receipt where id = :id")
+		.setParameter("id", id)
+		.executeUpdate();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Receipt> findAll() {
+		return entityManager
+				.createQuery("from Receipt")
+				.getResultList();
 	}
 	
 }

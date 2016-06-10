@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import home.family_planner.meals.helper.FoodProductAssembler;
 import home.family_planner.meals.model.FoodProduct;
 import home.family_planner.meals.repository.FoodProductRepository;
+import home.family_planner.meals.resource.FoodProductResource;
 
 @RestController
 @RequestMapping("/foodProducts")
@@ -24,47 +26,48 @@ public class FoodProductController {
 	public final static String RESPONSE = "{\"id\":1,\"title\":\"Palov\"}";
 	
 	@Autowired
-	FoodProductRepository foodProductRepository;
+	FoodProductRepository repository;
 
     @Transactional
 	@RequestMapping(method=RequestMethod.POST)
-    public @ResponseBody FoodProduct add(@RequestBody FoodProduct input) {
-		foodProductRepository.save(input);
-        return input;
+    public @ResponseBody FoodProductResource add(@RequestBody FoodProduct input) {
+		repository.save(input);
+        return new FoodProductAssembler().toResource(input);
     }
     
     @Transactional
 	@RequestMapping(value="/{id}", method=RequestMethod.POST)
-    public 	@ResponseBody FoodProduct update(@PathVariable("id") Long id, @RequestBody FoodProduct input) {
-    	validateFoodProduct(id);
-    	FoodProduct foodProduct = foodProductRepository.findOne(id);
+    public 	@ResponseBody FoodProductResource update(@PathVariable("id") Long id, @RequestBody FoodProduct input) {
+    	FoodProduct foodProduct = getAndValidateFoodProduct(id);
     	foodProduct.setTitle(input.getTitle());
     	foodProduct.setDescription(input.getDescription());
     	foodProduct.setPrice(input.getPrice());
-		foodProductRepository.save(foodProduct);
-        return foodProduct;
+		repository.save(foodProduct);
+        return new FoodProductAssembler().toResource(foodProduct);
     }
     
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
-    public @ResponseBody FoodProduct get(@PathVariable("id") Long id) {
-		validateFoodProduct(id);
-        return foodProductRepository.findOne(id);
+    public @ResponseBody FoodProductResource get(@PathVariable("id") Long id) {
+		FoodProduct foodProduct = getAndValidateFoodProduct(id);
+        return new FoodProductAssembler().toResource(foodProduct);
     }
 	
 	@RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody List<FoodProduct> foods() {
-        return foodProductRepository.findAll();
+    public @ResponseBody List<FoodProductResource> foods() {
+        return new FoodProductAssembler().toResources(repository.findAll());
     }
 	
 	@Transactional
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
-		validateFoodProduct(id);
-        foodProductRepository.delete(id);
+		getAndValidateFoodProduct(id);
+        repository.delete(id);
     }
 	
-	private void validateFoodProduct(Long id) {
-		this.foodProductRepository.findOne(id);
+	private FoodProduct getAndValidateFoodProduct(Long id) {
+		FoodProduct fp = this.repository.findOne(id);
+		if(fp == null) throw new FoodProductNotFoundException(id);
+		return fp;
 	}
 
 }

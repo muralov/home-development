@@ -19,6 +19,7 @@ import home.family_planner.meals.helper.MealResourceAssembler;
 import home.family_planner.meals.model.FoodProduct;
 import home.family_planner.meals.model.Meal;
 import home.family_planner.meals.repository.MealRepository;
+import home.family_planner.meals.repository.ReceiptRepository;
 import home.family_planner.meals.resource.MealResource;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
@@ -32,6 +33,11 @@ public class MealController {
 	
 	@Autowired
 	MealRepository repository;
+	
+	@Autowired
+	ReceiptRepository receiptRepository;
+	
+	private MealResourceAssembler assembler = new MealResourceAssembler();
 	
     @Transactional
 	@RequestMapping(method=RequestMethod.POST)
@@ -54,7 +60,7 @@ public class MealController {
     
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public @ResponseBody MealResource get(@PathVariable("id") Long id) {
-    	Meal meal = repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
+    	Meal meal = getAndValidateMeal(id);
     	MealResource mr = new MealResourceAssembler().toResource(meal);
     	mr.add(linkTo(methodOn(MealController.class).getFoodProducts(id)).withRel(FOOD_PRODUCTS_REL));
     	mr.add(linkTo(methodOn(ReceiptController.class).get(Long.valueOf(1))).withRel(RECEIPT_REL));
@@ -62,11 +68,8 @@ public class MealController {
     }
 	
 	@RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody List<MealResource> foods() {
-		MealResourceAssembler assembler = new MealResourceAssembler();
-        return repository.findAll().stream()
-        		.map(meal -> assembler.toResource(meal))
-        		.collect(Collectors.toList());
+    public @ResponseBody List<MealResource> meals() {
+        return assembler.toResources(repository.findAll());
     }
 	
 	@Transactional
@@ -74,6 +77,7 @@ public class MealController {
     public void delete(@PathVariable("id") Long id) {
 		getAndValidateMeal(id);
 		repository.delete(id);
+//		receiptRepository.delete(meal.getReceipt().getId());
     }
 	
 	@RequestMapping(value="/{id}/foodProducts", method=RequestMethod.GET)
