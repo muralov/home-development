@@ -1,1 +1,8 @@
-.gradle
+#ignore build files
+build
+bin
+
+#ignore project eclipse generated files
+.classpath
+.project
+.settings
