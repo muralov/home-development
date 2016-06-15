@@ -25,7 +25,7 @@ app.service("GroceryService", function ($http) {
 
     groceryService.groceryItems = [];
 
-    $http.get("data/server_data.json")
+    $http.get("http://localhost:8080/meals")
         .success(function (data) {
             groceryService.groceryItems = data;
 
@@ -36,6 +36,18 @@ app.service("GroceryService", function ($http) {
         .error(function (data, status) {
             alert("Things went wrong");
         })
+
+    var url = "https://api.getevents.co/event?&lat=41.904196&lng=12.465974";
+    $http({
+        method: 'JSONP',
+        url: url
+    }).
+    success(function(status) {
+        //your code when success
+    }).
+    error(function(status) {
+        //your code when fails
+    });
 
     groceryService.findById = function(id) {
         for(var item in groceryService.groceryItems) {
