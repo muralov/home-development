@@ -37,18 +37,6 @@ app.service("GroceryService", function ($http) {
             alert("Things went wrong");
         })
 
-    var url = "https://api.getevents.co/event?&lat=41.904196&lng=12.465974";
-    $http({
-        method: 'JSONP',
-        url: url
-    }).
-    success(function(status) {
-        //your code when success
-    }).
-    error(function(status) {
-        //your code when fails
-    });
-
     groceryService.findById = function(id) {
         for(var item in groceryService.groceryItems) {
             if (groceryService.groceryItems[item].id === id) {
