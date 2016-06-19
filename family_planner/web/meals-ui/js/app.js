@@ -1,0 +1,136 @@
+
+var app = angular.module('meals-ui', ["ngRoute", "homeCtrl", "groceryListCtrl"]);
+
+app.config(function ($routeProvider) {
+    $routeProvider
+        .when("/", {
+            templateUrl: "views/groceryList.html",
+            controller: "HomeCtrl"
+        })
+        .when("/addItem", {
+            templateUrl: "views/addItem.html",
+            controller: "GroceryListCtrl"
+        })
+        .when("/addItem/edit/:id/", {
+            templateUrl: "views/addItem.html",
+            controller: "GroceryListCtrl"
+        })
+        .otherwise({
+            redirectTo: "/"
+        })
+})
+
+app.service("GroceryService", function ($http) {
+    var groceryService = {};
+
+    groceryService.groceryItems = [];
+
+    $http.get("http://localhost:8080/meals")
+        .success(function (data) {
+            groceryService.groceryItems = data;
+
+            for(var item in groceryService.groceryItems) {
+                groceryService.groceryItems[item].date = new Date(groceryService.groceryItems[item].date);
+            }
+        })
+        .error(function (data, status) {
+            alert("Things went wrong");
+        })
+
+    var url = "https://api.getevents.co/event?&lat=41.904196&lng=12.465974";
+    $http({
+        method: 'JSONP',
+        url: url
+    }).
+    success(function(status) {
+        //your code when success
+    }).
+    error(function(status) {
+        //your code when fails
+    });
+
+    groceryService.findById = function(id) {
+        for(var item in groceryService.groceryItems) {
+            if (groceryService.groceryItems[item].id === id) {
+                console.log(groceryService.groceryItems[item])
+                return groceryService.groceryItems[item];
+            }
+        }
+    }
+
+    groceryService.getNewId = function () {
+
+        if(groceryService.newId) {
+            groceryService.newId++;
+            return groceryService.newId;
+        } else {
+            var maxId = _.max(groceryService.groceryItems, function (entry) {
+                return entry.id;
+            });
+            groceryService.newId = maxId.id + 1;
+            return groceryService.newId;
+        }
+
+    }
+
+    groceryService.markCompleted = function (entry) {
+        entry.completed = !entry.completed;
+    }
+
+    groceryService.removeItem = function (entry) {
+
+        $http.post("data/delete_item.json", {id: entry.id})
+            .success(function (data) {
+                if(data.status) {
+                    var index = groceryService.groceryItems.indexOf(entry);
+                    groceryService.groceryItems.splice(index, 1);
+                }
+            })
+            .error(function (data, status) {
+
+            });
+
+    }
+
+    groceryService.save = function(entry) {
+
+        var updatedItem = groceryService.findById(entry.id);
+        if(updatedItem) {
+
+            $http.post("data/updated_item.json", entry)
+                .success(function (data) {
+                    if(data.status == 1) {
+                        updatedItem.completed = entry.completed;
+                        updatedItem.itemName = entry.itemName;
+                        updatedItem.date = entry.date;
+                    }
+                })
+                .error(function (data, status) {
+
+                });
+
+        } else {
+
+            $http.post("data/added_item.json", entry)
+                .success(function(data) {
+                    entry.id = data.newId;
+                })
+                .error(function(data, status) {
+
+                });
+
+            //entry.id = groceryService.getNewId();
+            groceryService.groceryItems.push(entry);
+        }
+
+    }
+
+    return groceryService;
+})
+
+app.directive("murGroceryItem", function() {
+    return {
+        restrict: "E",
+        templateUrl: "views/groceryItem.html"
+    }
+})
