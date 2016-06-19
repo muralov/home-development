@@ -76,5 +76,18 @@ public class SortingTest {
 			assertEquals(expected[i], actual[i]);
 		}
 	}
+	
+	@Test
+	public void countingSort() {
+		int arr[] = {7,1,5,2,2};
+		int expectedArr[] = {1,2,2,5,7}; 
+		int[] sortedArr = Sorting.countingSort(arr);
+		assertArrayEquals(expectedArr, sortedArr);
+		
+		int arr2[] = {3,2,6,5,7,6};
+		int expectedArr2[] = {2,3,5,6,6,7};
+		sortedArr = Sorting.countingSort(arr2);
+		assertArrayEquals(expectedArr2, sortedArr);
+	}
 
 }
