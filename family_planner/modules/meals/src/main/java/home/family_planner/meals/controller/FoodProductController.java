@@ -20,7 +20,7 @@ import home.family_planner.meals.model.FoodProduct;
 import home.family_planner.meals.repository.FoodProductRepository;
 import home.family_planner.meals.resource.FoodProductResource;
 
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin
 @RestController
 @RequestMapping("/foodProducts")
 public class FoodProductController {

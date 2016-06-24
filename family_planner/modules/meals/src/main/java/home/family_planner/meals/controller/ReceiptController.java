@@ -23,7 +23,7 @@ import home.family_planner.meals.repository.ReceiptRepository;
 import home.family_planner.meals.resource.MealResource;
 import home.family_planner.meals.resource.ReceiptResource;
 
-@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin(origins = {"http://localhost:63342", "http://localhost:8080"})
 @RestController
 @RequestMapping("/receipts")
 public class ReceiptController {
