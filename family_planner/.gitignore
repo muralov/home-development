@@ -1,6 +1,7 @@
 #ignore build files
 build
 bin
+.gradle
 
 #ignore pdf or image files
 docs/**/*.pdf
