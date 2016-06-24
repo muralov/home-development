@@ -25,7 +25,7 @@ app.service("GroceryService", function ($http) {
 
     groceryService.groceryItems = [];
 
-    $http.get("http://localhost:8080/meals")
+    $http.get("http://localhost:8080/foodProducts")
         .success(function (data) {
             groceryService.groceryItems = data;
 
