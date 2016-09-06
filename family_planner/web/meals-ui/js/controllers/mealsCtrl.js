@@ -2,9 +2,9 @@
  * Created by MUR on 15.06.2016.
  */
 
-var home = angular.module("homeCtrl", []);
+var home = angular.module("meals", []);
 
-app.controller("HomeCtrl", function ($scope, GroceryService) {
+home.controller("MealsCtrl", function ($scope, GroceryService) {
     $scope.groceryItems = GroceryService.groceryItems;
     $scope.appTitle = "Grocery List";
 
@@ -19,4 +19,4 @@ app.controller("HomeCtrl", function ($scope, GroceryService) {
     $scope.$watch(function(){return GroceryService.groceryItems;}, function (groceryItems) {
         $scope.groceryItems = groceryItems;
     })
-})
+});

@@ -1,19 +1,19 @@
 
-var app = angular.module('meals-ui', ["ngRoute", "homeCtrl", "groceryListCtrl"]);
+var app = angular.module('meals-ui', ["ngRoute", "meals", "editItemCtrl"]);
 
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "views/groceryList.html",
-            controller: "HomeCtrl"
+            controller: "MealsCtrl"
         })
         .when("/addItem", {
             templateUrl: "views/addItem.html",
-            controller: "GroceryListCtrl"
+            controller: "EditItemCtrl"
         })
         .when("/addItem/edit/:id/", {
             templateUrl: "views/addItem.html",
-            controller: "GroceryListCtrl"
+            controller: "EditItemCtrl"
         })
         .otherwise({
             redirectTo: "/"

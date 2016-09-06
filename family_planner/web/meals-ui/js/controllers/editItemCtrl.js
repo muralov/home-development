@@ -1,10 +1,10 @@
 /**
- * Created by MUR on 15.06.2016.
+ * Created by mansur on 9/4/16.
  */
 
-var groceryList = angular.module("groceryListCtrl", []);
+var groceryList = angular.module("editItemCtrl", []);
 
-groceryList.controller("GroceryListCtrl", function ($scope, $routeParams, $location, GroceryService) {
+groceryList.controller("EditItemCtrl", function ($scope, $routeParams, $location, GroceryService) {
 
     if(!$routeParams.id) {
         $scope.groceryItem = {id: 0, completed: false, itemName: "", date: new Date()};
