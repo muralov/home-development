@@ -12,15 +12,15 @@ subprojects {
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
 	apply plugin: 'spring-boot'
-	
+
 	repositories {
 		mavenCentral()
-		maven{url "file:///C:/Users/MUR/home-development/libs/releases"}
+		maven{url "file:///C:/Users/MUR/meals-development/libs/releases"}
 	}
 
 	sourceCompatibility = 1.8
 	targetCompatibility = 1.8
-	
+
 	dependencies {
 		// tag::jetty[]
 		compile("org.springframework.boot:spring-boot-starter-web") {
@@ -34,4 +34,8 @@ subprojects {
 		testCompile("junit:junit")
 		testCompile("org.springframework.boot:spring-boot-starter-test")
 	}
+}
+
+task getHomeDir << {
+    println gradle.gradleHomeDir
 }

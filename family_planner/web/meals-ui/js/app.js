@@ -1,18 +1,18 @@
 
-var app = angular.module('meals-ui', ["ngRoute", "meals", "editItemCtrl"]);
+var app = angular.module('meals-ui', ["ngRoute", "meals"]);
 
 app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
             templateUrl: "views/groceryList.html",
-            controller: "MealsCtrl"
+            controller: "MealListCtrl"
         })
         .when("/addItem", {
-            templateUrl: "views/addItem.html",
+            templateUrl: "views/addEditItem.html",
             controller: "EditItemCtrl"
         })
         .when("/addItem/edit/:id/", {
-            templateUrl: "views/addItem.html",
+            templateUrl: "views/addEditItem.html",
             controller: "EditItemCtrl"
         })
         .otherwise({
@@ -28,10 +28,6 @@ app.service("GroceryService", function ($http) {
     $http.get("http://localhost:8080/foodProducts")
         .success(function (data) {
             groceryService.groceryItems = data;
-
-            for(var item in groceryService.groceryItems) {
-                groceryService.groceryItems[item].date = new Date(groceryService.groceryItems[item].date);
-            }
         })
         .error(function (data, status) {
             alert("Things went wrong");
@@ -85,12 +81,12 @@ app.service("GroceryService", function ($http) {
         var updatedItem = groceryService.findById(entry.id);
         if(updatedItem) {
 
-            $http.post("data/updated_item.json", entry)
-                .success(function (data) {
-                    if(data.status == 1) {
-                        updatedItem.completed = entry.completed;
+            $http.post("http://localhost:8080/foodProducts/" + entry.id, entry)
+                .success(function (data, status) {
+                    if(status == 200) {
                         updatedItem.itemName = entry.itemName;
-                        updatedItem.date = entry.date;
+                        updatedItem.description = entry.description;
+                        updatedItem.price = entry.price;
                     }
                 })
                 .error(function (data, status) {
@@ -99,7 +95,7 @@ app.service("GroceryService", function ($http) {
 
         } else {
 
-            $http.post("data/added_item.json", entry)
+            $http.post("http://localhost:8080/foodProducts", entry)
                 .success(function(data) {
                     entry.id = data.newId;
                 })

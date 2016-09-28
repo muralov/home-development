@@ -3,9 +3,39 @@
         <span class="glyphicon glyphicon-plus"></span>
         Add Grocery Item
     </a>
-    <ul class="list-group">
-        <li ng-repeat="item in groceryItems | orderBy: '-date'" class="list-group-item text-center clearfix">
-            <mur-grocery-item></mur-grocery-item>
-        </li>
-    </ul>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in groceryItems | orderBy: '-date'" class="text-left">
+                <th scope="row">{{item.id}}</th>
+                <td>
+                    <span style="font-weight: bold">{{item.title | uppercase}}</span>
+                </td>
+                <td>
+                    <span>{{item.description}}</span>
+                </td>
+                <td>
+                    <span>{{item.price | currency: "€"}}</span>
+                </td>
+                <td>
+                    <a href="#/addItem/edit/{{item.id}}" class="btn btn-sm btn-default pull-right">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-danger pull-right" ng-click="removeItem(item)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

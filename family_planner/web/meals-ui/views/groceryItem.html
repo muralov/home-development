@@ -3,13 +3,23 @@
 </button-->
 
 <!--span ng-class="{strike:item.completed}" style="font-weight: bold">{{item.itemName | uppercase}}</span-->
-
-<span style="font-weight: bold">{{item.title | uppercase}}</span>
-
-<button type="button" class="btn btn-sm btn-danger pull-right" ng-click="removeItem(item)">
-    <span class="glyphicon glyphicon-trash"></span>
-</button>
-
-<a href="#/addItem/edit/{{item.id}}" class="btn btn-sm btn-default pull-right">
-    <span class="glyphicon glyphicon-pencil"></span>
-</a>
+<th scope="row">{{item.id}}</th>
+<td>
+    <span style="font-weight: bold">{{item.title | uppercase}}</span>
+</td>
+<td>
+    <span>{{item.description}}</span>
+</td>
+<td>
+    <span>{{item.price}}</span>
+</td>
+<td>
+    <button type="button" class="btn btn-sm btn-danger pull-right" ng-click="removeItem(item)">
+        <span class="glyphicon glyphicon-trash"></span>
+    </button>
+</td>
+<td>
+    <a href="#/addItem/edit/{{item.id}}" class="btn btn-sm btn-default pull-right">
+        <span class="glyphicon glyphicon-pencil"></span>
+    </a>
+</td>
