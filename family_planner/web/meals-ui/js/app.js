@@ -18,7 +18,7 @@ app.config(function ($routeProvider) {
         .otherwise({
             redirectTo: "/"
         })
-})
+});
 
 app.service("GroceryService", function ($http) {
     var groceryService = {};
@@ -36,7 +36,7 @@ app.service("GroceryService", function ($http) {
     groceryService.findById = function(id) {
         for(var item in groceryService.groceryItems) {
             if (groceryService.groceryItems[item].id === id) {
-                console.log(groceryService.groceryItems[item])
+                console.log(groceryService.groceryItems[item]);
                 return groceryService.groceryItems[item];
             }
         }
@@ -55,11 +55,11 @@ app.service("GroceryService", function ($http) {
             return groceryService.newId;
         }
 
-    }
+    };
 
     groceryService.markCompleted = function (entry) {
         entry.completed = !entry.completed;
-    }
+    };
 
     groceryService.removeItem = function (entry) {
 
@@ -71,10 +71,10 @@ app.service("GroceryService", function ($http) {
                 }
             })
             .error(function (data, status) {
-
+                console.log("deletion could not be performed successfully.");
             });
 
-    }
+    };
 
     groceryService.save = function(entry) {
 
@@ -90,7 +90,7 @@ app.service("GroceryService", function ($http) {
                     }
                 })
                 .error(function (data, status) {
-
+                    console.log("update could not be performed successfully.");
                 });
 
         } else {
@@ -100,21 +100,38 @@ app.service("GroceryService", function ($http) {
                     entry.id = data.newId;
                 })
                 .error(function(data, status) {
-
+                    console.log("update could not be performed successfully.");
                 });
 
             //entry.id = groceryService.getNewId();
             groceryService.groceryItems.push(entry);
         }
 
-    }
+    };
 
     return groceryService;
-})
+});
 
-app.directive("murGroceryItem", function() {
+app.directive("murGroceryItem", function () {
     return {
-        restrict: "E",
         templateUrl: "views/groceryItem.html"
     }
-})
+});
+
+app.component("murGroceryItemComp", {
+    templateUrl: "views/groceryItem.html"
+});
+
+app.component('phoneList', {
+    template:
+    '<ul>' +
+    '<li ng-repeat="phone in $ctrl.items">' +
+    '<span>{{phone.title}}</span>' +
+    '<p>{{phone.description}}</p>' +
+    '</li>' +
+    '</ul>',
+    controller: function PhoneListController(GroceryService) {
+        this.items = GroceryService.groceryItems;
+        console.log(GroceryService.groceryItems.length);
+    }
+});
