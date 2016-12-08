@@ -1,0 +1,14 @@
+{
+  "name": "meals-ui",
+  "description": "Meals UI application",
+  "version": "0.0.0",
+  "homepage": "https://github.com/muralov/home-development/tree/master/family_planner/web/meals-ui",
+  "license": "private",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-route": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "bootstrap": "3.3.x"
+  }
+}
