@@ -15,6 +15,7 @@ public class MealResourceAssembler extends ResourceAssemblerSupport<Meal, MealRe
 	@Override
 	public MealResource toResource(Meal entity) {
 		MealResource resource = createResourceWithId(entity.getId(), entity);
+		resource.setMealId(entity.getId());
 		resource.setTitle(entity.getTitle());
 		resource.setDescription(entity.getDescription());
 		return resource;

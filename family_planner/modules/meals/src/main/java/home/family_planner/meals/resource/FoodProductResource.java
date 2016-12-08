@@ -1,15 +1,27 @@
 package home.family_planner.meals.resource;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.hateoas.ResourceSupport;
 
 public class FoodProductResource extends ResourceSupport{
+
+	private long foodProductId;
 
 	private String title;
 	
 	private String description;
 	
 	private double price;
-	
+
+	@JsonProperty("id")
+	public long getFoodProductId() {
+		return foodProductId;
+	}
+
+	public void setFoodProductId(long foodProductId) {
+		this.foodProductId = foodProductId;
+	}
+
 	public double getPrice() {
 		return price;
 	}

@@ -1,5 +1,7 @@
 package home.java.lambdas;
 
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.UnaryOperator;
 
 public class RecurionsExercises {
@@ -22,8 +24,17 @@ public class RecurionsExercises {
 		return function.apply(n);
 	}
 	
-	public static void main(String[] args) {
+	public static int smallestFactor(int n) {
+		return nextFactor(7, n);
+	}
+	
+	static BiFunction<Integer, Integer, Integer> biFunction;
+	
+	public static int nextFactor(int k, int n) {
 		
+		biFunction = (x, y) -> y % x == 0 ? x: biFunction.apply(++x, y);
+		
+		return biFunction.apply(++k, n);
 	}
 
 }

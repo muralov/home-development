@@ -15,6 +15,7 @@ public class FoodProductAssembler extends ResourceAssemblerSupport<FoodProduct, 
 	@Override
 	public FoodProductResource toResource(FoodProduct entity) {
 		FoodProductResource resource = createResourceWithId(entity.getId(), entity);
+		resource.setFoodProductId(entity.getId());
 		resource.setTitle(entity.getTitle());
 		resource.setDescription(entity.getDescription());
 		resource.setPrice(entity.getPrice());

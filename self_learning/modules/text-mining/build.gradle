@@ -1,4 +1,0 @@
-
-dependencies {
-    compile 'org.springframework:spring-context:4.2.5.RELEASE'
-}

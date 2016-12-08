@@ -3,9 +3,21 @@
         <span class="glyphicon glyphicon-plus"></span>
         Add Grocery Item
     </a>
-    <ul class="list-group">
-        <li ng-repeat="item in groceryItems | orderBy: '-date'" class="list-group-item text-center clearfix">
-            <mur-grocery-item></mur-grocery-item>
-        </li>
-    </ul>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr mur-grocery-item ng-repeat="item in groceryItems | orderBy: '-date'" class="text-left"/>
+            <!--tr>
+                <phone-list></phone-list>
+            </tr-->
+        </tbody>
+    </table>
 </div>
