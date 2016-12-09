@@ -1,8 +1,11 @@
 #ignore build files
 build
 bin
+classes
+web/meals-ui/node_modules/
 .gradle
 .idea
+npm-debug.log
 
 #ignore pdf or image files
 docs/**/*.pdf
