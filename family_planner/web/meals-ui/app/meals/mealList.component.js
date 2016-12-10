@@ -22,3 +22,8 @@ meals.component('mealList', {
 
     }
 });
+//
+// meals.component('mealListItem', {
+//     require     :  {parentComp:'^mealList'},
+//     templateUrl :  'meals/groceryListItem.html'
+// });
