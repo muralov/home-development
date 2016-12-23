@@ -25,8 +25,6 @@ import home.family_planner.meals.resource.FoodProductResource;
 @RequestMapping("/foodProducts")
 public class FoodProductController {
 	
-	public final static String RESPONSE = "{\"id\":1,\"title\":\"Palov\"}";
-	
 	@Autowired
 	FoodProductRepository repository;
 

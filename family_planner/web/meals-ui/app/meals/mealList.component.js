@@ -6,24 +6,19 @@
 var meals = angular.module('meals');
 
 meals.component('mealList', {
-    templateUrl: 'meals/groceryList.html',
-    controller: function MealListCtrl(GroceryService) {
+    templateUrl: 'meals/mealList.html',
+    controller: function MealListCtrl(MealService) {
         var self = this;
 
-        GroceryService.getFoodProductsPromise().then(
+        MealService.getMealsPromise().then(
             function (result) {
                 self.groceryItems = result;
             }
         );
 
         this.removeItem = function (entry) {
-            GroceryService.removeItem(entry);
+            MealService.removeItem(entry);
         }
 
     }
 });
-//
-// meals.component('mealListItem', {
-//     require     :  {parentComp:'^mealList'},
-//     templateUrl :  'meals/groceryListItem.html'
-// });

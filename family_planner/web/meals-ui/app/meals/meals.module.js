@@ -5,27 +5,18 @@
 
 var meals = angular.module('meals', []);
 
-meals.service("GroceryService", function ($http) {
-    var groceryService = {};
+meals.service("MealService", function ($http) {
+    var mealsService = {};
 
-    groceryService.groceryItems = [];
+    mealsService.groceryItems = [];
 
-    groceryService.getFoodProducts = function () {
-        $http.get('http://localhost:8080/foodProducts').then(function(response) {
-                groceryService.groceryItems = response.data;
-            },
-            function (error) {
-                console.error('error occurred: ', error);
-            });
-    }
-
-    groceryService.getFoodProductsPromise = function () {
-        return $http({method:"GET", url:"http://localhost:8080/foodProducts"})
+    mealsService.getMealsPromise = function () {
+        return $http({method:"GET", url:"http://localhost:8080/meals"})
             .then(
                 function(result){
                     // What we return here is the data that will be accessible
                     // to us after the promise resolves
-                    groceryService.groceryItems = result.data;
+                    mealsService.groceryItems = result.data;
                     return result.data;
                 },
                 function (error) {
@@ -34,36 +25,36 @@ meals.service("GroceryService", function ($http) {
             );
     }
 
-    groceryService.findById = function(id) {
-        for(var item in groceryService.groceryItems) {
-            if (groceryService.groceryItems[item].id === id) {
-                console.log(groceryService.groceryItems[item]);
-                return groceryService.groceryItems[item];
+    mealsService.findById = function(id) {
+        for(var item in mealsService.groceryItems) {
+            if (mealsService.groceryItems[item].id === id) {
+                console.log(mealsService.groceryItems[item]);
+                return mealsService.groceryItems[item];
             }
         }
     }
 
-    groceryService.getNewId = function () {
+    mealsService.getNewId = function () {
 
-        if(groceryService.newId) {
-            groceryService.newId++;
-            return groceryService.newId;
+        if(mealsService.newId) {
+            mealsService.newId++;
+            return mealsService.newId;
         } else {
-            var maxId = _.max(groceryService.groceryItems, function (entry) {
+            var maxId = _.max(mealsService.groceryItems, function (entry) {
                 return entry.id;
             });
-            groceryService.newId = maxId.id + 1;
-            return groceryService.newId;
+            mealsService.newId = maxId.id + 1;
+            return mealsService.newId;
         }
 
     };
 
-    groceryService.removeItem = function (entry) {
-        $http.delete("http://localhost:8080/foodProducts/"+ entry.id)
+    mealsService.removeItem = function (entry) {
+        $http.delete("http://localhost:8080/meals/"+ entry.id)
             .then(function(response) {
                     if(response.status) {
-                        var index = groceryService.groceryItems.indexOf(entry);
-                        groceryService.groceryItems.splice(index, 1);
+                        var index = mealsService.groceryItems.indexOf(entry);
+                        mealsService.groceryItems.splice(index, 1);
                     }
                 },
                 function (error) {
@@ -72,12 +63,12 @@ meals.service("GroceryService", function ($http) {
             );
     };
 
-    groceryService.save = function(entry) {
+    mealsService.save = function(entry) {
 
-        var updatedItem = groceryService.findById(entry.id);
+        var updatedItem = mealsService.findById(entry.id);
         if(updatedItem) {
 
-            $http.post("http://localhost:8080/foodProducts/" + entry.id, entry)
+            $http.post("http://localhost:8080/meals/" + entry.id, entry)
                 .success(function (data, status) {
                     if(status == 200) {
                         updatedItem.title = entry.title;
@@ -89,7 +80,7 @@ meals.service("GroceryService", function ($http) {
                     console.log("update could not be performed successfully.");
                 });
         } else {
-            $http.post("http://localhost:8080/foodProducts", entry)
+            $http.post("http://localhost:8080/meals", entry)
                 .success(function(data) {
                     entry = data;
                 })
@@ -97,10 +88,10 @@ meals.service("GroceryService", function ($http) {
                     console.log("update could not be performed successfully.");
                 });
 
-            groceryService.groceryItems.push(entry);
+            mealsService.groceryItems.push(entry);
         }
 
     };
 
-    return groceryService;
+    return mealsService;
 });

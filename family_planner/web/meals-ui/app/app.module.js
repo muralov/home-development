@@ -4,8 +4,9 @@
 'use strict';
 
 // Define the `meal-ui` module
-var mealsUI = angular.module('meals-ui', [
+var mealsUI = angular.module('meal-planner', [
     // ...which depends on the `meals` module
     'ngRoute',
-    'meals'
+    'meals',
+    'groceries'
 ]);

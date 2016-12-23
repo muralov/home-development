@@ -1,0 +1,57 @@
+
+<table>
+    <tr>
+        <td>
+            <div class="col-xs-12">
+
+                <div class="col-md-2">
+                    <!--Sidebar content-->
+
+                    Search: <input ng-model="$ctrl.query" />
+
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in $ctrl.groceryItems | orderBy: '-date' | filter:$ctrl.query" class="text-left">
+                        <th scope="row">{{item.id}}</th>
+                        <td>
+                            <span style="font-weight: bold">{{item.title | uppercase}}</span>
+                        </td>
+                        <td>
+                            <span>{{item.description}}</span>
+                        </td>
+                        <td>
+                            <span>{{item.price | currency: "€"}}</span>
+                        </td>
+                        <td>
+                            <a href="#!/groceries/addItem/edit/{{item.id}}" class="btn btn-sm btn-default pull-right">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-danger pull-right" ng-click="$ctrl.removeItem(item)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="right" style="padding-right: 15px">
+            <a href="#!/groceries/addItem" class="btn btn-success">Add Food Product</a>
+        </td>
+    </tr>
+</table>

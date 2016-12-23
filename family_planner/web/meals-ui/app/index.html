@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="meals-ui">
+<html lang="en" ng-app="meal-planner">
 <head>
     <meta charset="UTF-8">
-    <title>Meals</title>
+    <title>Meal Planner</title>
 
     <!--JS imports-->
     <script src="bower_components/angular/angular.js"></script>
@@ -18,6 +18,9 @@
     <script src="meals/meals.module.js"></script>
     <script src="meals/mealList.component.js"></script>
     <script src="meals/addEditItem.component.js"></script>
+    <script src="groceries/groceries.module.js"></script>
+    <script src="groceries/groceryList.component.js"></script>
+    <script src="groceries/addEditItem.component.js"></script>
 
     <!--Stylesheets-->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -31,7 +34,7 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     <span class="glyphicon glyphicon-apple" style="color:#5bdb48"></span>
-                    {{appTitle}}
+                    <!--<meal-planner></meal-planner>-->
                 </a>
             </div>
         </div>

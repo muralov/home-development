@@ -3,20 +3,32 @@
  */
 'use strict';
 angular.
-    module('meals-ui').
+    module('meal-planner').
     config(['$locationProvider', '$routeProvider',
     function config($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
 
         $routeProvider.
-        when('/addItem', {
+        when('/groceries', {
+            template: '<grocery-list></grocery-list>'
+        }).
+        when('/groceries/addItem', {
             template: '<add-edit-item></add-edit-item>'
         }).
-        when('/addItem/edit/:id/', {
+        when('/groceries/addItem/edit/:id/', {
+            template: '<add-edit-item></add-edit-item>'
+        }).
+        when('/meals', {
+            template: '<meal-list></meal-list>'
+        }).
+        when('/meals/addItem', {
+            template: '<add-edit-item></add-edit-item>'
+        }).
+        when('/meals/addItem/edit/:id/', {
             template: '<add-edit-item></add-edit-item>'
         }).
         otherwise({
-             template: "<meal-list></meal-list>"
+             template: "index.html"
         });
     }
 ]);

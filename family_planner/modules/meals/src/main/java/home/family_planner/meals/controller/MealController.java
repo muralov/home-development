@@ -25,7 +25,8 @@ import home.family_planner.meals.resource.MealResource;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
-@CrossOrigin(origins = {"http://localhost:63342", "http://localhost:8080"})
+@CrossOrigin(origins = {"http://localhost:63342", "http://localhost:8080",
+		"http://localhost:8000", "chrome-extension://ljlmonadebogfjabhkppkoohjkjclfai"})
 @RestController
 @RequestMapping("/meals")
 public class MealController {
