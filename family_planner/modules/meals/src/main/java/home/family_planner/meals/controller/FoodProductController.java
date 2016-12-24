@@ -65,8 +65,7 @@ public class FoodProductController {
     }
 	
 	private FoodProduct getAndValidateFoodProduct(Long id) {
-		FoodProduct fp = this.repository.findOne(id);
-		if(fp == null) throw new FoodProductNotFoundException(id);
+		FoodProduct fp = this.repository.findOne(id).orElseThrow(() -> new FoodProductNotFoundException(id));
 		return fp;
 	}
 

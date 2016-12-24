@@ -17,7 +17,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 /**
  * Created by mansur on 12/20/16.
  */
-@CrossOrigin(origins = {"http://localhost:63342", "http://localhost:8080", "chrome-extension://ljlmonadebogfjabhkppkoohjkjclfai"})
+@CrossOrigin
 @RestController
 @RequestMapping("/plans")
 public class PlanController {

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import home.family_planner.meals.model.FoodProduct;
 import org.springframework.stereotype.Repository;
 import home.family_planner.meals.model.Meal;
 
@@ -24,6 +26,12 @@ public class MealRepository {
 				.getSingleResult();
 		return Optional.of(meal);
 	}
+
+//	public Optional<List<FoodProduct>> getMealProducts(Long id) {
+//		Optional<List<FoodProduct>> f
+//		(FoodProduct) entityManager.createQuery("from FoodProduct where id = :id")
+//				.setParameter("id", id)
+//	}
 	
 	public void delete(Long id) {
 		entityManager.createQuery("delete Meal where id = :id")

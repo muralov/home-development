@@ -19,11 +19,11 @@ public class Meal extends Food {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-	
+
 	@OneToOne (cascade= CascadeType.ALL)
 	@JoinColumn (name="receipt_id")
 	private Receipt receipt = null;
-	
+
 	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn (name="meal_id", nullable=false)
 	private List<FoodProduct> foodProducts = new ArrayList<>();

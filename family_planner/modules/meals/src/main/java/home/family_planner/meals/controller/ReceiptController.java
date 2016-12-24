@@ -23,7 +23,7 @@ import home.family_planner.meals.repository.ReceiptRepository;
 import home.family_planner.meals.resource.MealResource;
 import home.family_planner.meals.resource.ReceiptResource;
 
-@CrossOrigin(origins = {"http://localhost:63342", "http://localhost:8080"})
+@CrossOrigin
 @RestController
 @RequestMapping("/receipts")
 public class ReceiptController {
@@ -49,7 +49,9 @@ public class ReceiptController {
 	
     @RequestMapping(value="/{id}", method=RequestMethod.GET)
     public @ResponseBody ReceiptResource get(@PathVariable("id") Long id) {
-        Receipt receipt = repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
+        Receipt receipt = repository.findOne(id).orElseThrow(
+                () -> new ReceiptNotFoundException(id)
+        );
         return assembler.toResource(receipt);
     }
     
