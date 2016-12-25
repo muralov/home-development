@@ -37,6 +37,11 @@
                             </a>
                         </td>
                         <td>
+                            <div ng-controller="GroceryAddPopup">
+                                <button ng-click="open(item.id)" class="btn btn-warning">Add Grocery Item</button>
+                            </div>
+                        </td>
+                        <td>
                             <button type="button" class="btn btn-sm btn-danger pull-right" ng-click="$ctrl.removeItem(item)">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </button>
@@ -50,7 +55,7 @@
     </tr>
     <tr>
         <td align="right" style="padding-right: 15px">
-            <a href="#!/meals/addItem" class="btn btn-success">Add Food Product</a>
+            <a href="#!/meals/addItem" class="btn btn-success">Add Meal</a>
         </td>
     </tr>
 </table>

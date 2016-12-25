@@ -22,10 +22,10 @@ angular.
             template: '<meal-list></meal-list>'
         }).
         when('/meals/addItem', {
-            template: '<add-edit-item></add-edit-item>'
+            template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
         when('/meals/addItem/edit/:id/', {
-            template: '<add-edit-item></add-edit-item>'
+            template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
         otherwise({
              template: "index.html"

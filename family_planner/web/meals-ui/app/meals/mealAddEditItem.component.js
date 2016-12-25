@@ -5,18 +5,18 @@
 
 var meals = angular.module('meals');
 
-meals.component('addEditItem', {
+meals.component('mealAddEditItem', {
     templateUrl: 'meals/addEditItem.html',
-    controller: function EditItemCtrl($routeParams, $location, GroceryService) {
+    controller: function EditItemCtrl($routeParams, $location, MealService) {
         if(!$routeParams.id) {
             this.groceryItem = {id: 0};
         } else {
-            this.groceryItem = angular.copy(GroceryService.findById(parseInt($routeParams.id)));
+            this.groceryItem = angular.copy(MealService.findById(parseInt($routeParams.id)));
         }
 
         this.save = function () {
-            GroceryService.save(this.groceryItem);
-            $location.path("/");
+            MealService.save(this.groceryItem);
+            $location.path("/meals");
         }
     }
 });

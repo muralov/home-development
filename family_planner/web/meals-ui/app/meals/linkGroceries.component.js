@@ -5,15 +5,15 @@
 
 var meals = angular.module('meals');
 
-// meals.component('linkGroceries', {
-//     templateUrl: 'meals/linkGroceries.html',
-//     controller: function LinkGroceriesCtrl(MealPlannerService) {
-//         var self = this;
-//
-//         MealPlannerService.getMealsPromise().then(
-//             function (result) {
-//                 self.groceries = result;
-//             }
-//         );
-//     }
-// });
+meals.component('linkGroceries', {
+    templateUrl: 'meals/linkGroceries.html',
+    controller: function LinkGroceriesCtrl(MealPlannerService) {
+        var self = this;
+
+        MealPlannerService.getMealsPromise().then(
+            function (result) {
+                self.groceries = result;
+            }
+        );
+    }
+});

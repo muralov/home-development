@@ -3,15 +3,7 @@ package home.family_planner.meals.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Meal extends Food {
@@ -25,7 +17,12 @@ public class Meal extends Food {
 	private Receipt receipt = null;
 
 	@ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn (name="meal_id", nullable=false)
+	@JoinTable(
+			name = "meal_food_products",
+			joinColumns = @JoinColumn(name = "meal_id"),
+			inverseJoinColumns = @JoinColumn(name = "food_products_id"),
+			uniqueConstraints = @UniqueConstraint(columnNames={"meal_id", "food_products_id"})
+	)
 	private List<FoodProduct> foodProducts = new ArrayList<>();
 	
 	public Meal() {}
@@ -34,7 +31,7 @@ public class Meal extends Food {
 		this.receipt = receipt;
 		this.foodProducts = foodProducts;
 	}
-	
+
 	public long getId() {
 		return id;
 	}

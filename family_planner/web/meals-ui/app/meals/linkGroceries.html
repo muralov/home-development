@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div>
+    <p>Select food product to add.</p>
+
+    <table class="table table-striped">
+        <tr ng-repeat="item in groceries" class="text-left">
+            <td>
+                <div class="checkbox">
+                    <label><input type="checkbox" ng-model="selected[item.id]">{{item.title}}</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right" style="padding-right: 15px">
+                <button ng-click="save()" class="btn btn-warning">Save</button>
+            </td>
+        </tr>
+    </table>
+
+</div>
