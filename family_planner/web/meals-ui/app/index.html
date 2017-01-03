@@ -29,20 +29,39 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
-    <!--Navigation-->
-    <nav class="navbar navbar-default">
+<div id="meals-ui">
+    <header>
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">
                     <span class="glyphicon glyphicon-apple" style="color:#5bdb48"></span>
-                    <!--<meal-planner></meal-planner>-->
+                    <span style="font-family: sans-serif; font-size: smaller">Meals App</span>
                 </a>
             </div>
         </div>
-    </nav>
+        <!--Navigation-->
+        <nav>
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#!/meals">Meals</a></li>
+                <li role="presentation"><a href="#!/groceries">Groceries</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div ng-view></div>
+    <section id="meals-ui-content">
+        <div ng-view></div>
+        Registration begins on <time>2014-11-25</time>
+    </section>
 
+    <!--<aside class="PullQuote">-->
+        <!--We don't know how the universe started, so we can't be sure it won't-->
+        <!--just end, maybe today.-->
+    <!--</aside>-->
+
+    <footer>
+        &copy; 2017 Meals App
+    </footer>
+</div>
 </body>
 </html>

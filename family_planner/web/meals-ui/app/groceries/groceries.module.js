@@ -92,12 +92,11 @@ meals.service("GroceryService", function ($http) {
             $http.post("http://localhost:8080/foodProducts", entry)
                 .success(function(data) {
                     entry = data;
+                    groceryService.groceryItems.push(entry);
                 })
                 .error(function(data, status) {
                     console.log("update could not be performed successfully.");
                 });
-
-            groceryService.groceryItems.push(entry);
         }
 
     };

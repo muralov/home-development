@@ -1,3 +1,7 @@
+body {
+    background-image:url("/images/background4.jpg");
+}
+
 table {
     width: 100%;
     max-width: 100%;
@@ -19,4 +23,18 @@ table {
     position: absolute;
     right: 0;
     top: 40%;
+}
+
+.PullQuote {
+    float: right;
+    max-width: 300px;
+    border-top: thin black solid;
+    border-bottom: thick black solid;
+    font-size: 30px;
+    line-height: 130%;
+    font-style: italic;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
