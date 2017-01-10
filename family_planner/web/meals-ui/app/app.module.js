@@ -5,10 +5,11 @@
 
 // Define the `meal-ui` module
 var mealPlanner = angular.module('meal-planner', [
-    // ...which depends on the `meals` module
+    // ...which depends on the `planner` module
     'ngRoute',
     'meals',
     'groceries',
+    'planner',
     'ui.bootstrap'
 ]);
 

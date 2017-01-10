@@ -6,7 +6,7 @@
 var meals = angular.module('meals');
 
 meals.component('mealList', {
-    templateUrl: 'meals/mealList.html',
+    templateUrl: 'planner/mealList.html',
     controller: function MealListCtrl(MealService) {
         var self = this;
 

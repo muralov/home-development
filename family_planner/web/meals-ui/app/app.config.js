@@ -2,13 +2,15 @@
  * Created by mansur on 12/9/16.
  */
 'use strict';
-angular.
-    module('meal-planner').
-    config(['$locationProvider', '$routeProvider',
+var mealPlanner = angular.module('meal-planner');
+mealPlanner.config(['$locationProvider', '$routeProvider',
     function config($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
 
         $routeProvider.
+        when('/', {
+            templateUrl: 'planner/plannerTable.html'
+        }).
         when('/groceries', {
             template: '<grocery-list></grocery-list>'
         }).
@@ -18,17 +20,32 @@ angular.
         when('/groceries/addItem/edit/:id/', {
             template: '<add-edit-item></add-edit-item>'
         }).
-        when('/meals', {
+        when('/planner', {
             template: '<meal-list></meal-list>'
         }).
-        when('/meals/addItem', {
+        when('/planner/addItem', {
             template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
-        when('/meals/addItem/edit/:id/', {
+        when('/planner/addItem/edit/:id/', {
             template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
         otherwise({
-             template: "index.html"
+             redirectTo: "/"
         });
     }
 ]);
+
+// mealPlanner.run([
+//     '$rootScope',
+//     function($rootScope) {
+//         // see what's going on when the route tries to change
+//         $rootScope.$on('$routeChangeStart', function(event, next, current) {
+//             // next is an object that is the route that we are starting to go to
+//             // current is an object that is the route where we are currently
+//             var currentPath = current.originalPath;
+//             var nextPath = next.originalPath;
+//
+//             console.log('Starting to leave %s to go to %s', currentPath, nextPath);
+//         });
+//     }
+// ]);

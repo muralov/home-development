@@ -6,7 +6,7 @@
 var meals = angular.module('meals');
 
 meals.component('linkGroceries', {
-    templateUrl: 'meals/linkGroceries.html',
+    templateUrl: 'planner/linkGroceries.html',
     controller: function LinkGroceriesCtrl(MealPlannerService) {
         var self = this;
 

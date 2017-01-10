@@ -1,11 +1,15 @@
 body {
-    background-image:url("/images/background4.jpg");
+    /*background-image:url("/images/background4.jpg");*/
 }
 
 table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
+}
+
+article {
+    margin: 10px 10px 10px 10px;
 }
 
 /*.strike {
@@ -25,16 +29,61 @@ table {
     top: 40%;
 }
 
-.PullQuote {
-    float: right;
-    max-width: 300px;
-    border-top: thin black solid;
-    border-bottom: thick black solid;
-    font-size: 30px;
-    line-height: 130%;
-    font-style: italic;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 15px;
-    margin-bottom: 10px;
+.plannerTable {
+    border-collapse: collapse;
+    width: 70%;
+    border-radius: 4px;
 }
+
+.plannerTable th {
+    background-color: #337ab7; !important;
+    color: #fff;
+}
+
+.plannerTable tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.plannerTable tr:nth-of-type(odd) {
+    background-color: #ddd;
+}
+
+/*.plannerTable td:nth-child(n+2), th:nth-child(n+2) {*/
+    /*text-align: right;*/
+/*}*/
+
+.plannerTable td:nth-child(n+2) {
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.plannerTable tr:nth-child(n+2) th:nth-child(1) {
+    text-align: center;
+    width: 30px;
+}
+
+.plannerTable tr:nth-child(1) th {
+    text-align: center;
+}
+
+.plannerTable td {
+    padding: 5px 5px 5px 5px;
+}
+
+.plannerTable p {
+    margin-bottom: 2px;
+}
+
+.plannerWidget {
+
+}
+
+.plannerWidget:hover .plannerWidgetDelete {
+    visibility: visible;
+}
+
+.plannerWidgetDelete {
+    visibility: hidden;
+}
+
+

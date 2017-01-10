@@ -24,6 +24,9 @@
     <script src="groceries/groceryList.component.js"></script>
     <script src="groceries/addEditItem.component.js"></script>
 
+    <script src="planner/planner.module.js"></script>
+    <script src="planner/cell.component.js"></script>
+    <script src="planner/foodWidget.component.js"></script>
     <!--Stylesheets-->
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -33,7 +36,7 @@
     <header>
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="#!/">
                     <span class="glyphicon glyphicon-apple" style="color:#5bdb48"></span>
                     <span style="font-family: sans-serif; font-size: smaller">Meals App</span>
                 </a>
@@ -42,7 +45,7 @@
         <!--Navigation-->
         <nav>
             <ul class="nav nav-tabs">
-                <li role="presentation"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#!/">Home</a></li>
                 <li role="presentation"><a href="#!/meals">Meals</a></li>
                 <li role="presentation"><a href="#!/groceries">Groceries</a></li>
             </ul>
@@ -50,8 +53,13 @@
     </header>
 
     <section id="meals-ui-content">
-        <div ng-view></div>
-        Registration begins on <time>2014-11-25</time>
+        <article>
+            <div ng-view></div>
+        </article>
+
+        <article>
+        </article>
+
     </section>
 
     <!--<aside class="PullQuote">-->
