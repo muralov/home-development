@@ -15,7 +15,7 @@ subprojects {
 
 	repositories {
 		mavenCentral()
-		maven{url "file:///C:/Users/MUR/meals-development/libs/releases"}
+		maven{url "file:///C:/Users/MUR/planner-development/libs/releases"}
 	}
 
 	sourceCompatibility = 1.8

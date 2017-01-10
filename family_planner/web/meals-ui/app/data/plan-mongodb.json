@@ -1,0 +1,183 @@
+{
+  "date" : "2017-01-07T00:00:00",
+  "days" : [
+    {
+      "name" : "Monday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast",
+          "links" : {
+            "foods": [
+              {
+                "href": "/foods/1"
+              },
+              {
+                "href": "/foods/2"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Lunch",
+          "links" :
+          {
+            "foods" : [
+              {
+                "href" : "/foods/1"
+              },
+              {
+                "href" : "/foods/4"
+              }
+            ],
+            "meals" : [
+              {
+                "href" : "/meals/1"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Dinner",
+          "links" : {
+            "foods" : [
+              {
+                "rel" : "food",
+                "href" : "/foods/1"
+              }
+            ],
+            "meals" : [
+              {
+                "rel" : "meal",
+                "href" : "/meals/1"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name" : "Tuesday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast",
+          "links" : {
+            "foods": [
+              {
+                "href": "/foods/1"
+              },
+              {
+                "href": "/foods/2"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Lunch",
+          "links" :
+          {
+            "foods" : [
+              {
+                "href" : "/foods/1"
+              },
+              {
+                "href" : "/foods/4"
+              }
+            ],
+            "meals" : [
+              {
+                "href" : "/meals/2"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Dinner",
+          "links" : {
+            "foods" : [
+              {
+                "rel" : "food",
+                "href" : "/foods/1"
+              }
+            ],
+            "meals" : [
+              {
+                "rel" : "meal",
+                "href" : "/meals/3"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name" : "Wednesday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast"
+        },
+        {
+          "name": "Lunch"
+        },
+        {
+          "name": "Dinner"
+        }
+      ]
+    },
+    {
+      "name" : "Thursday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast"
+        },
+        {
+          "name": "Lunch"
+        },
+        {
+          "name": "Dinner"
+        }
+      ]
+    },
+    {
+      "name" : "Friday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast"
+        },
+        {
+          "name": "Lunch"
+        },
+        {
+          "name": "Dinner"
+        }
+      ]
+    },
+    {
+      "name" : "Saturday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast"
+        },
+        {
+          "name": "Lunch"
+        },
+        {
+          "name": "Dinner"
+        }
+      ]
+    },
+    {
+      "name" : "Sunday",
+      "mealTimes" : [
+        {
+          "name": "Breakfast"
+        },
+        {
+          "name": "Lunch"
+        },
+        {
+          "name": "Dinner"
+        }
+      ]
+    }
+  ]
+}
