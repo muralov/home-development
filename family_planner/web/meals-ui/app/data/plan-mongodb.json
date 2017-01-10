@@ -8,8 +8,8 @@
           "name": "Breakfast",
           "_links": {
             "foods": [
-              "/foods/1",
-              "/foods/2"
+              "/foodProducts/1",
+              "/foodProducts/5"
             ]
           }
         },
@@ -17,11 +17,11 @@
           "name": "Lunch",
           "_links": {
             "foods": [
-              "/foods/1",
-              "/foods/4"
+              "/foodProducts/11",
+              "/foodProducts/7"
             ],
             "meals": [
-              "/meals/1"
+              "/meals/12"
             ]
           }
         },
@@ -29,10 +29,18 @@
           "name": "Dinner",
           "_links": {
             "foods": [
-              "/foods/1"
+              "/foodProducts/13"
             ],
             "meals": [
-              "/meals/1"
+              "/meals/9"
+            ]
+          }
+        },
+        {
+          "name": "Snack",
+          "_links": {
+            "foods": [
+              "/foodProducts/25"
             ]
           }
         }
@@ -45,10 +53,22 @@
           "name": "Breakfast"
         },
         {
-          "name": "Lunch"
+          "name": "Lunch",
+          "_links": {
+            "foods": [
+              "/foodProducts/11",
+              "/foodProducts/7"
+            ],
+            "meals": [
+              "/meals/12"
+            ]
+          }
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -63,6 +83,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -77,6 +100,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -91,6 +117,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -105,6 +134,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -119,6 +151,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     }

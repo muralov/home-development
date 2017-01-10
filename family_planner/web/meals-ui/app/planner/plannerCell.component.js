@@ -5,5 +5,8 @@
 
 angular.module("planner").
 component("plannerCell", {
-    templateUrl: "planner/plannerCell.html"
+    templateUrl: "planner/plannerCell.html",
+    bindings: {
+        links: '='
+    }
 })

@@ -12,7 +12,15 @@ component("foodWidget", {
     }
 });
 
-function FoodWidgetCtrl() {
+function FoodWidgetCtrl($http, PlannerService) {
+    // console.log(this.food);
     var self = this;
-    this.food = self.food.title;
+
+    PlannerService.getFood(this.food)
+        .then(
+            function(result){
+                self.foodObj = result;
+            }
+        );
+
 }

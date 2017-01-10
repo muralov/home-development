@@ -1,5 +1,5 @@
 include 'planner'
-include 'planner'
+include 'meals'
 
 project(":planner").projectDir = new File(rootDir, "modules/planner")
-project(":planner").projectDir = new File(rootDir, "modules/planner")
+project(":meals").projectDir = new File(rootDir, "modules/meals")

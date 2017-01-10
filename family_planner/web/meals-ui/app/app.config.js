@@ -9,7 +9,7 @@ mealPlanner.config(['$locationProvider', '$routeProvider',
 
         $routeProvider.
         when('/', {
-            templateUrl: 'planner/plannerTable.html'
+            template: '<planner-table></planner-table>'
         }).
         when('/groceries', {
             template: '<grocery-list></grocery-list>'
@@ -30,7 +30,7 @@ mealPlanner.config(['$locationProvider', '$routeProvider',
             template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
         otherwise({
-             redirectTo: "/"
+             redirectTo: '/'
         });
     }
 ]);

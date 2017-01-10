@@ -51,6 +51,9 @@
               }
             ]
           }
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -65,6 +68,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -79,6 +85,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -93,6 +102,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -107,6 +119,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -121,6 +136,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     },
@@ -135,6 +153,9 @@
         },
         {
           "name": "Dinner"
+        },
+        {
+          "name": "Snack"
         }
       ]
     }

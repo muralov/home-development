@@ -1,11 +1,6 @@
-<p class="plannerWidget">
-    <food-widget></food-widget>
+<p ng-repeat="f in $ctrl.links.foods" class="plannerWidget">
+    <food-widget food="f"></food-widget>
 </p>
-<p class="plannerWidget">
-    <food-widget></food-widget>
+<p ng-repeat="m in $ctrl.links.meals" class="plannerWidget">
+    <food-widget food="m"></food-widget>
 </p>
-<p class="plannerWidget">
-    <food-widget></food-widget>
-</p>
-<!--<p><span class="label label-primary">Shakarob</span></p>-->
-<!--<p><span class="label label-primary">Cola</span></p>-->
