@@ -8,7 +8,7 @@ dependencies {
 }
 
 jar {
-	baseName = 'planner'
+	baseName = 'meals'
 	version =  '0.0.0'
 }
 

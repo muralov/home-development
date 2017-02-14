@@ -1,0 +1,52 @@
+res:
+ image: mgood/resolvable
+ volumes:
+ - /var/run/docker.sock:/tmp/docker.sock
+ - /etc/resolv.conf:/tmp/resolv.conf
+ hostname: resolvable
+
+meals-db:
+ image: postgres
+ expose:
+ - "5432"
+ ports:
+ - "5432:5432"
+ volumes:
+ - /home/mansur/data/postgres:/var/lib/postgresql/data
+ hostname: meals-db
+ environment:
+  - POSTGRES_PASSWORD=postgres
+ links:
+ - res
+
+meals-service:
+ image: meals-service:v1
+ expose: 
+ - "8080"
+ ports:
+ - "8080:8080"
+ hostname: meals-service
+ links:
+ - meals-db
+
+planner-db:
+ image: mongo
+ expose:
+ - "27017"
+ ports:
+ - "27017:27017"
+ volumes:
+ - /home/mansur/data/mongo:/data/db
+ hostname: planner-db
+ links:
+ - res
+
+planner-service:
+ image: planner-service:v1
+ expose:
+ - "8081"
+ ports:
+ - "8081:8081"
+ hostname: planner-service
+ links:
+ - planner-db

@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 public class MongoConnection {
 
     public @Bean MongoClient mongoClient() {
-        return new MongoClient("localhost");
+        return new MongoClient("planner-db");
     }
 
     public @Bean
