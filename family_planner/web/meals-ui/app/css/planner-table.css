@@ -29,61 +29,74 @@ article {
     top: 40%;
 }
 
-.plannerTable {
+/* Planner table styles */
+
+#plannerTable {
     border-collapse: collapse;
     width: 70%;
     border-radius: 4px;
+    float: left;
 }
 
-.plannerTable th {
+#plannerTable th {
     background-color: #337ab7; !important;
     color: #fff;
 }
 
-.plannerTable tr:nth-of-type(even) {
+#plannerTable tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
 
-.plannerTable tr:nth-of-type(odd) {
+#plannerTable tr:nth-of-type(odd) {
     background-color: #ddd;
 }
 
-/*.plannerTable td:nth-child(n+2), th:nth-child(n+2) {*/
-    /*text-align: right;*/
-/*}*/
+#plannerTable td {
+    padding: 5px 5px 5px 5px;
+}
 
-.plannerTable td:nth-child(n+2) {
+#plannerTable td:nth-child(n+2) {
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
 }
 
-.plannerTable tr:nth-child(n+2) th:nth-child(1) {
+#plannerTable tr:nth-child(n+2) th:nth-child(1) {
     text-align: center;
     width: 30px;
 }
 
-.plannerTable tr:nth-child(1) th {
+#plannerTable tr:nth-child(1) th {
     text-align: center;
 }
 
-.plannerTable td {
-    padding: 5px 5px 5px 5px;
-}
-
-.plannerTable p {
+#plannerTable p {
     margin-bottom: 2px;
 }
 
-.plannerWidget {
+/* Planner cell */
 
+#plannerTableCell {
+    min-height: 70px;
 }
 
-.plannerWidget:hover .plannerWidgetDelete {
-    visibility: visible;
+/* Food widget styles */
+
+#foodWidget {
+    display:inline-block;
+    width: 100%;
 }
 
-.plannerWidgetDelete {
+#foodWidgetDelete {
     visibility: hidden;
+    float: right;
+}
+
+#foodWidgetDelete.glyphicon-remove {
+    right: 0;
+}
+
+#foodWidget:hover #foodWidgetDelete {
+    visibility: visible;
 }
 
 

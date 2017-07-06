@@ -1,0 +1,13 @@
+#food-list {
+    float: right;
+    width: 29%;
+    margin-left: 3px;
+}
+
+#food-list > div {
+    background-color: #2e6da4;
+    height: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}

@@ -13,7 +13,6 @@ component("foodWidget", {
 });
 
 function FoodWidgetCtrl($http, PlannerService) {
-    // console.log(this.food);
     var self = this;
 
     PlannerService.getFood(this.food)

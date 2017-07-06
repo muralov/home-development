@@ -4,8 +4,8 @@
 'use strict';
 
 angular.module("planner").
-component("plannerCell", {
-    templateUrl: "planner/plannerCell.html",
+component("plannerTableCell", {
+    templateUrl: "planner/plannerTableCell.html",
     bindings: {
         links: '='
     }

@@ -1,7 +1,7 @@
 <div class="panel panel-default">
-    <div class="panel-heading">Meals Planner</div>
+    <div class="panel-heading">Meal Planner</div>
     <div class="panel-body">
-        <table class="plannerTable" id="plannerTable">
+        <table id="plannerTable">
             <tr>
                 <th></th>
                 <th>Breakfast</th>
@@ -12,9 +12,10 @@
             <tr ng-repeat="day in $ctrl.plan.days">
                 <th>{{day.name}}</th>
                 <td ng-repeat="mealTime in day.mealTimes">
-                    <planner-cell links="mealTime._links"></planner-cell>
+                    <planner-table-cell links="mealTime._links"></planner-table-cell>
                 </td>
             </tr>
         </table>
+        <food-list plan="$ctrl.plan"></food-list>
     </div>
 </div>

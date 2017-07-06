@@ -30,6 +30,18 @@ meals.service("PlannerService", function ($http) {
                         console.error('error occurred: ', error);
                     }
                 );
+        },
+
+        getMealFoods: function(mealPath) {
+            return $http.get("http://localhost:8080/" + mealPath + "/foodProducts")
+                .then(
+                    function(result){
+                        return result.data;
+                    },
+                    function (error) {
+                        console.error('error occurred: ', error);
+                    }
+                );
         }
 
     }
