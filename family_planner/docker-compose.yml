@@ -19,6 +19,16 @@ meals-db:
  links:
  - res
 
+meals-service:
+ image: meals-service:v1
+ expose:
+ - "8080"
+ ports:
+ - "8080:8080"
+ hostname: meals-service
+ links:
+ - meals-db
+
 planner-db:
  image: mongo
  expose:
@@ -30,3 +40,13 @@ planner-db:
  hostname: planner-db
  links:
  - res
+
+planner-service:
+ image: planner-service:v1
+ expose:
+ - "8081"
+ ports:
+ - "8081:8081"
+ hostname: planner-service
+ links:
+ - planner-db
