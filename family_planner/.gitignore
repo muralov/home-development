@@ -18,3 +18,4 @@ docs/~*.docx
 .classpath
 .project
 .settings
+.iml
