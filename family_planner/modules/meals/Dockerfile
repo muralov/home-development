@@ -1,6 +1,6 @@
 FROM java:8
 MAINTAINER Mano Inc.
-CMD ["mkdir", "app"]
+ENV REFRESHED_AT 2017-10-09
 COPY . /app
 WORKDIR /app
 CMD ["./gradlew", "build", "-x", "test"]

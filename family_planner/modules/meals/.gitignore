@@ -1,4 +1,0 @@
-/bin/
-
-#ignore pdf or image files
-docs/**/~*.*
