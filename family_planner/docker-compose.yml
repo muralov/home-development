@@ -1,11 +1,6 @@
 version: '3.1'
+
 services:
-  #res:
-   #image: mgood/resolvable
-   #volumes:
-   #- /var/run/docker.sock:/tmp/docker.sock
-   #- /etc/resolv.conf:/tmp/resolv.conf
-   #hostname: resolvable
 
   meals-db:
    image: postgres
@@ -20,11 +15,10 @@ services:
    hostname: meals-db
    environment:
     - POSTGRES_PASSWORD=postgres
-   #links:
-   #- res
 
   meals-service:
-   image: meals-image:1.0
+   build:
+    context: ./modules/meals
    expose:
    - "8080"
    ports:
@@ -46,7 +40,8 @@ services:
    #- res
 
   planner-service:
-   image: planner-image:1.0
+   build:
+    context: ./modules/planner
    expose:
    - "8081"
    ports:

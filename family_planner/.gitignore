@@ -3,8 +3,8 @@ build
 bin
 classes
 web/meals-ui/node_modules/
-.gradle
-.idea
+*.gradle
+*.idea
 npm-debug.log
 
 #ignore pdf or image files
@@ -15,7 +15,7 @@ docs/diagrams/*.jpg
 docs/~*.docx
 
 #ignore project eclipse generated files
-.classpath
-.project
-.settings
-.iml
+**/*.classpath
+**/*.project
+**/*.settings
+**/*.iml
