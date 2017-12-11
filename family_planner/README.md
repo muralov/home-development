@@ -1,5 +1,7 @@
-This file describes how to start meal planner app backend with the following steps:
+<h1> Meals Planner App </h1>
+<p> The following sections describe how to set up the app </p
 
+<p>
 1. Create a folder /home/django/data/postgres for the volume creation in docker compose file.
 
 2. run "docker-compose up" in the root project folder
@@ -11,30 +13,29 @@ This file describes how to start meal planner app backend with the following ste
 4. run "docker-compose down" and "docker-compose up" restart the containers
 
 5. Start the frontend with "npm start"
+</p>
 
---------------------------------------------------------------------------------------
-
+<p>
 Building images with Dockerfile
 
 Steps to build an image and start the container for meals module:
 
-1. Navigate to family_planner folder (root project foler)
+1. Navigate to family_planner folder (root project folder)
 
 2. run "docker image build -t meals-image:1.0 -f modules/meals/Dockerfile ." command
 
 
 Steps to build an image and start the container for planner module:
 
-1. Navigate to family_planner folder (root project foler)
+1. Navigate to family_planner folder (root project folder)
 
 2. run "docker image build -t planner-image:1.0 -f modules/planner/Dockerfile ." command
+</p>
 
-
------------------------------------------------------------------------------------------
-
+<p>
 To see the REST API documentation with Swagger:
 
-1. Install Swagger UI Console plugin for chrome
+1. Use http://localhost:8080/swagger-ui.html to see the REST APIs of meals service
 
-2. Give the url of a dedicated application server with v2/api-docs, e.g. http://localhost:8080/v2/api-docs
-
+2. Use http://localhost:8081/swagger-ui.html to see the REST APIs of planner service
+</p> 
