@@ -6,6 +6,7 @@ web/meals-ui/node_modules/
 *.gradle
 *.idea
 npm-debug.log
+fulllog.txt
 
 #ignore pdf or image files
 docs/**/*.pdf
