@@ -8,7 +8,9 @@ component("plannerTable", {
     templateUrl: "planner/plannerTable.html",
     controller: function ($http, PlannerService) {
         var self = this;
-        PlannerService.getPlan("plans/17187")
+        //TODO: the following hardcoded value must be removed and the plans
+        //TODO: must be retrieved dynamically
+        PlannerService.getPlan("plans/17173")
             .then(
                 function(result){
                     self.plan = result;

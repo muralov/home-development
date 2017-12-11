@@ -6,7 +6,7 @@
 var meals = angular.module('meals');
 
 meals.component('mealAddEditItem', {
-    templateUrl: 'planner/addEditItem.html',
+    templateUrl: 'meals/addEditItem.html',
     controller: function EditItemCtrl($routeParams, $location, MealService) {
         if(!$routeParams.id) {
             this.groceryItem = {id: 0};

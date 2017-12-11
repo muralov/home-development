@@ -20,13 +20,13 @@ mealPlanner.config(['$locationProvider', '$routeProvider',
         when('/groceries/addItem/edit/:id/', {
             template: '<add-edit-item></add-edit-item>'
         }).
-        when('/planner', {
+        when('/meals', {
             template: '<meal-list></meal-list>'
         }).
-        when('/planner/addItem', {
+        when('/meals/addItem', {
             template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
-        when('/planner/addItem/edit/:id/', {
+        when('/meals/addItem/edit/:id/', {
             template: '<meal-add-edit-item></meal-add-edit-item>'
         }).
         otherwise({

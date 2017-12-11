@@ -14,12 +14,12 @@ meals.controller("GroceryAddPopup", function ($scope, $uibModal, MealPlannerServ
 
                 //Opening the popup window
                 $uibModal.open({
-                    templateUrl: "planner/linkGroceries.html",
+                    templateUrl: "meals/linkGroceries.html",
                     controller: function ($scope, $http, MealService) {
                         $scope.groceries = result;
                         $scope.selected = [];
 
-                        $http({method:"GET", url:"http://localhost:8080/planner/" + mealId + "/foodProducts"})
+                        $http({method:"GET", url:"http://localhost:8080/meals/" + mealId + "/foodProducts"})
                             .then(
                                 function(result){
                                     for (var i = 0; i < result.data.length; i++) {
@@ -55,7 +55,7 @@ meals.service("MealService", function ($http) {
     mealsService.groceryItems = [];
 
     mealsService.getMealsPromise = function () {
-        return $http({method:"GET", url:"http://localhost:8080/planner"})
+        return $http({method:"GET", url:"http://localhost:8080/meals"})
             .then(
                 function(result){
                     // What we return here is the data that will be accessible
@@ -70,7 +70,7 @@ meals.service("MealService", function ($http) {
     }
 
     mealsService.getMealGroceriesPromise = function () {
-        return $http({method:"GET", url:"http://localhost:8080/planner"})
+        return $http({method:"GET", url:"http://localhost:8080/meals"})
             .then(
                 function(result){
                     // What we return here is the data that will be accessible
@@ -109,7 +109,7 @@ meals.service("MealService", function ($http) {
     };
 
     mealsService.removeItem = function (entry) {
-        $http.delete("http://localhost:8080/planner/"+ entry.id)
+        $http.delete("http://localhost:8080/meals/"+ entry.id)
             .then(function(response) {
                     if(response.status) {
                         var index = mealsService.groceryItems.indexOf(entry);
@@ -126,7 +126,7 @@ meals.service("MealService", function ($http) {
         var updatedItem = mealsService.findById(entry.id);
         if(updatedItem) {
 
-            $http.post("http://localhost:8080/planner/" + entry.id, entry)
+            $http.post("http://localhost:8080/meals/" + entry.id, entry)
                 .then(function (response) {
                     if(response.status == 200) {
                         updatedItem.title = entry.title;
@@ -138,7 +138,7 @@ meals.service("MealService", function ($http) {
                     console.log("update could not be performed successfully: " + error);
                 });
         } else {
-            $http.post("http://localhost:8080/planner", entry)
+            $http.post("http://localhost:8080/meals", entry)
                 .then(function(response) {
                         entry = response.data;
                         mealsService.groceryItems.push(entry);
@@ -151,7 +151,7 @@ meals.service("MealService", function ($http) {
     };
 
     mealsService.addFoodProductToMeal = function(mealId, foodProductId) {
-        $http({method: "PUT", url: "http://localhost:8080/planner/" + mealId + "/foodProducts/" + foodProductId})
+        $http({method: "PUT", url: "http://localhost:8080/meals/" + mealId + "/foodProducts/" + foodProductId})
             .then(function (data, status) {
                     if(status == 200) {
                         console.info('Food product have been added to the meal successfully.', data);
@@ -164,7 +164,7 @@ meals.service("MealService", function ($http) {
     };
 
     mealsService.removeFoodProductFromMeal = function(mealId, foodProductId) {
-        $http({method: "DELETE", url: "http://localhost:8080/planner/" + mealId + "/foodProducts/" + foodProductId})
+        $http({method: "DELETE", url: "http://localhost:8080/meals/" + mealId + "/foodProducts/" + foodProductId})
             .then(function (data, status) {
                     if(status == 200) {
                         console.info('Food product have been deleted from the meal successfully.');
