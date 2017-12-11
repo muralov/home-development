@@ -4,21 +4,18 @@ services:
 
   meals-db:
    image: postgres
-   environment:
-     POSTGRES_PASSWORD: postgres
    expose:
    - "5432"
    ports:
    - "5432:5432"
    volumes:
-   - /home/mansur/data/postgres:/var/lib/postgresql/data
+   - $HOME/data/postgres:/var/lib/postgresql/data
    hostname: meals-db
    environment:
     - POSTGRES_PASSWORD=postgres
 
   meals-service:
-   build:
-    context: ./modules/meals
+   image: meals-image:1.0
    expose:
    - "8080"
    ports:
@@ -34,14 +31,11 @@ services:
    ports:
    - "27017:27017"
    volumes:
-   - /home/mansur/data/mongo:/data/db
+   - $HOME/data/mongo:/data/db
    hostname: planner-db
-   #links:
-   #- res
 
   planner-service:
-   build:
-    context: ./modules/planner
+   image: planner-image:1.0
    expose:
    - "8081"
    ports:
