@@ -1,7 +1,10 @@
 <h1> Meals Planner App </h1>
 <p> The following sections describe how to start the app with docker-compose and in development mode.</p
 
-<h3>This section describes how to start the all micro services with docker-compose</h3><p>
+<p>
+<h3> Start the app with docker-compose</h3>
+
+This section describes how to start the all micro services with docker-compose
 
 1. Create "meals-image" and "planner-image" images in the family_planner folder w/ the following commands:
     - docker build -t meals-image:1.0 -f modules/meals/Dockerfile .
@@ -30,7 +33,7 @@ Note: To stop all containers at once run "docker-compose down" command
  
 4. Change property "spring.datasource.url=jdbc:postgresql://localhost:5432/food" in the file modules/meals/src/main/resources/application.properties
 
-5. Change mongoClient() method to intialize new MongoClient("localhost")
+5. Change mongoClient() method in the class MongoConnection to intialize new MongoClient("localhost")
 
 6. Start meals-service and planner-service microservices with IDE you are programming with. 
 </p>
