@@ -15,8 +15,8 @@ docs/ui/*.gif
 docs/diagrams/*.jpg
 docs/~*.docx
 
-#ignore project eclipse generated files
+#ignore project Intellij generated files
+**/*.iml
 **/*.classpath
 **/*.project
 **/*.settings
-**/*.iml

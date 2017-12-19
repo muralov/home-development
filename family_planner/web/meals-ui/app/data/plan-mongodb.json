@@ -8,7 +8,7 @@
           "name": "Breakfast",
           "_links": {
             "foods": [
-              "/foodProducts/1",
+              "/foodProducts/2",
               "/foodProducts/5"
             ]
           }
@@ -17,8 +17,8 @@
           "name": "Lunch",
           "_links": {
             "foods": [
-              "/foodProducts/11",
-              "/foodProducts/7"
+              "/foodProducts/4",
+              "/foodProducts/2"
             ],
             "meals": [
               "/meals/12"
@@ -29,7 +29,7 @@
           "name": "Dinner",
           "_links": {
             "foods": [
-              "/foodProducts/13"
+              "/foodProducts/3"
             ],
             "meals": [
               "/meals/9"
@@ -40,7 +40,7 @@
           "name": "Snack",
           "_links": {
             "foods": [
-              "/foodProducts/25"
+              "/foodProducts/5"
             ]
           }
         }
@@ -56,11 +56,11 @@
           "name": "Lunch",
           "_links": {
             "foods": [
-              "/foodProducts/11",
-              "/foodProducts/7"
+              "/foodProducts/2",
+              "/foodProducts/5"
             ],
             "meals": [
-              "/meals/12"
+              "/meals/6"
             ]
           }
         },

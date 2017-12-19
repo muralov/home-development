@@ -1,0 +1,10 @@
+#!/usr/bin/expect -r
+# This script is used to automate the respond for password prompt
+# set password variables
+set password postgres
+spawn createdb -p 5432 -h meals-db -e food -U postgres
+# Look for password prompt
+expect "Password:"
+# Send password aka $password
+send -- "$password\r"
+expect eof
