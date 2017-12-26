@@ -159,7 +159,7 @@ public class MealController {
 	}
 	
 	private Meal getAndValidateMeal(Long id) {
-		return repository.findOne(id).orElseThrow(() -> new ReceiptNotFoundException(id));
+		return repository.findOne(id).orElseThrow(() -> new MealNotFoundException(id));
 	}
 
 }
