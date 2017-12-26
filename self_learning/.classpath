@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/MUR/home_repo/spring-project/unresolved dependency - org.springframework spring-context 4.2.5.RELEASE"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
