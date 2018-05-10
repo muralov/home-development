@@ -1,4 +1,4 @@
-FROM openjdk:9-jre-slim
+FROM java:8
 MAINTAINER Mano Inc.
 ENV REFRESHED_AT 2018-05-10
 
