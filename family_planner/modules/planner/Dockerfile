@@ -1,8 +1,12 @@
 FROM java:8
 MAINTAINER Mano Inc.
-ENV REFRESHED_AT 2017-10-09
-COPY . /app
+ENV REFRESHED_AT 2018-05-10
+
+RUN mkdir /app
 WORKDIR /app
-RUN ./gradlew build -x test
+COPY build/libs/planner-0.0.0.jar /app
+VOLUME /app
+
 EXPOSE 8081
-CMD ["java", "-jar", "modules/planner/build/libs/planner-0.0.0.jar"]
+
+CMD java -jar planner-0.0.0.jar
