@@ -1,6 +1,6 @@
-FROM java:8
+FROM arm32v6/openjdk:8-alpine
+
 MAINTAINER Mano Inc.
-ENV REFRESHED_AT 2018-05-10
 
 RUN mkdir /app
 WORKDIR /app
